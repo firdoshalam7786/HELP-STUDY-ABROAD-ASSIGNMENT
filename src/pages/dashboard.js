@@ -1,4 +1,3 @@
-// src/pages/dashboard.js
 import React, { useEffect, useMemo } from "react";
 import Layout from "../components/Layout";
 import useUsersStore from "../store/useUsersStore";
@@ -13,7 +12,6 @@ import {
   CircularProgress,
   Avatar,
   Stack,
-  IconButton,
   useTheme,
   useMediaQuery,
   LinearProgress,
@@ -93,7 +91,8 @@ export default function DashboardPage() {
             Overview
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
-            Snapshot of users, products, and quick actions — designed for clarity.
+            Snapshot of users, products, and quick actions — designed for
+            clarity.
           </Typography>
         </Box>
 
@@ -140,14 +139,31 @@ export default function DashboardPage() {
               }}
               elevation={1}
             >
-              <CardContent sx={{ display: "flex", flexDirection: "column", gap: 2, flex: 1 }}>
-                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                  flex: 1,
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
                   <Box>
                     <Typography variant="subtitle2" color="text.secondary">
                       {s.title}
                     </Typography>
                     <Typography variant="h3" sx={{ fontWeight: 800, mt: 1 }}>
-                      {s.loading ? <CircularProgress size={28} /> : s.value ?? "--"}
+                      {s.loading ? (
+                        <CircularProgress size={28} />
+                      ) : (
+                        s.value ?? "--"
+                      )}
                     </Typography>
                   </Box>
 
@@ -174,10 +190,21 @@ export default function DashboardPage() {
                     <Typography variant="caption" color="text.secondary">
                       Activity
                     </Typography>
-                    <Chip label="Live" size="small" color="success" sx={{ ml: 1 }} />
-                    <Typography variant="caption" color="text.secondary" sx={{ ml: "auto" }}>
+                    <Chip
+                      label="Live"
+                      size="small"
+                      color="success"
+                      sx={{ ml: 1 }}
+                    />
+                    <Typography
+                      variant="caption"
+                      color="text.secondary"
+                      sx={{ ml: "auto" }}
+                    >
                       {/* simple computed percent for visual (defensive) */}
-                      {s.value ? `${Math.min(100, Math.round((s.value % 100) + 10))}%` : "—"}
+                      {s.value
+                        ? `${Math.min(100, Math.round((s.value % 100) + 10))}%`
+                        : "—"}
                     </Typography>
                   </Box>
 
@@ -189,7 +216,13 @@ export default function DashboardPage() {
                 </Box>
 
                 {/* spacer to push button to bottom */}
-                <Box sx={{ mt: "auto", display: "flex", justifyContent: "flex-end" }}>
+                <Box
+                  sx={{
+                    mt: "auto",
+                    display: "flex",
+                    justifyContent: "flex-end",
+                  }}
+                >
                   <Link href={s.href} style={{ textDecoration: "none" }}>
                     <Button
                       variant="contained"
@@ -207,19 +240,29 @@ export default function DashboardPage() {
 
         {/* Quick actions */}
         <Grid item xs={12} md={4}>
-          <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+          <Card
+            sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+          >
             <CardContent sx={{ flex: 1 }}>
               <Typography variant="subtitle2" color="text.secondary">
                 Quick Actions
               </Typography>
 
-              <Typography variant="body2" sx={{ mt: 1, mb: 2 }} color="text.secondary">
+              <Typography
+                variant="body2"
+                sx={{ mt: 1, mb: 2 }}
+                color="text.secondary"
+              >
                 Fast access to common pages and tools.
               </Typography>
 
               <Box sx={{ display: "grid", gap: 1.25 }}>
                 {quickActions.map((a) => (
-                  <Link key={a.href} href={a.href} style={{ textDecoration: "none" }}>
+                  <Link
+                    key={a.href}
+                    href={a.href}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button
                       variant="outlined"
                       fullWidth
@@ -231,11 +274,15 @@ export default function DashboardPage() {
                         textTransform: "none",
                       }}
                     >
-                      <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+                      <Box
+                        sx={{ display: "flex", gap: 1, alignItems: "center" }}
+                      >
                         <Typography>{a.label}</Typography>
                       </Box>
 
-                      <ArrowForwardIosIcon sx={{ fontSize: 16, color: "action.active" }} />
+                      <ArrowForwardIosIcon
+                        sx={{ fontSize: 16, color: "action.active" }}
+                      />
                     </Button>
                   </Link>
                 ))}
@@ -247,14 +294,28 @@ export default function DashboardPage() {
         {/* Notes / Summary */}
         <Grid item xs={12}>
           <Card>
-            <CardContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-              <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 2 }}>
+            <CardContent
+              sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 2,
+                }}
+              >
                 <Box>
                   <Typography variant="h6" sx={{ fontWeight: 700 }}>
                     Notes & Summary
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                    This dashboard uses a Layout component with a responsive drawer and logout. Below are suggested next steps:
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mt: 1 }}
+                  >
+                    This dashboard uses a Layout component with a responsive
+                    drawer and logout. Below are suggested next steps:
                   </Typography>
                 </Box>
 
@@ -275,30 +336,39 @@ export default function DashboardPage() {
                   gap: 2,
                 }}
               >
-                <Box sx={{ p: 2, borderRadius: 2, bgcolor: "background.default" }}>
+                <Box
+                  sx={{ p: 2, borderRadius: 2, bgcolor: "background.default" }}
+                >
                   <Typography variant="subtitle2" color="text.secondary">
                     Suggested
                   </Typography>
                   <Typography variant="body2" sx={{ mt: 1 }}>
-                    Add charts and KPIs such as monthly signups, product conversion, and average order value.
+                    Add charts and KPIs such as monthly signups, product
+                    conversion, and average order value.
                   </Typography>
                 </Box>
 
-                <Box sx={{ p: 2, borderRadius: 2, bgcolor: "background.default" }}>
+                <Box
+                  sx={{ p: 2, borderRadius: 2, bgcolor: "background.default" }}
+                >
                   <Typography variant="subtitle2" color="text.secondary">
                     Security
                   </Typography>
                   <Typography variant="body2" sx={{ mt: 1 }}>
-                    Consider adding role-based access and audit logs for admin actions.
+                    Consider adding role-based access and audit logs for admin
+                    actions.
                   </Typography>
                 </Box>
 
-                <Box sx={{ p: 2, borderRadius: 2, bgcolor: "background.default" }}>
+                <Box
+                  sx={{ p: 2, borderRadius: 2, bgcolor: "background.default" }}
+                >
                   <Typography variant="subtitle2" color="text.secondary">
                     Styling
                   </Typography>
                   <Typography variant="body2" sx={{ mt: 1 }}>
-                    Use consistent spacing and a limited color palette to keep the UI professional.
+                    Use consistent spacing and a limited color palette to keep
+                    the UI professional.
                   </Typography>
                 </Box>
               </Box>

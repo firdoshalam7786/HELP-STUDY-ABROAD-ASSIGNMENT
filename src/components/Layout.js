@@ -1,4 +1,3 @@
-// src/components/Layout.js
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -86,10 +85,28 @@ export default function Layout({ children }) {
 
   // Drawer content (stylish)
   const drawerContent = (
-    <Box sx={{ height: "100%", display: "flex", flexDirection: "column", bgcolor: "transparent" }}>
+    <Box
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        bgcolor: "transparent",
+      }}
+    >
       <Box sx={{ p: 3, display: "flex", alignItems: "center", gap: 2 }}>
-        <Paper elevation={0} sx={{ px: 1.2, py: 0.5, borderRadius: 1, bgcolor: "rgba(255,255,255,0.06)" }}>
-          <Typography variant="h6" sx={{ fontWeight: 800, color: "common.white", letterSpacing: 0.2 }}>
+        <Paper
+          elevation={0}
+          sx={{
+            px: 1.2,
+            py: 0.5,
+            borderRadius: 1,
+            bgcolor: "rgba(255,255,255,0.06)",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: 800, color: "common.white", letterSpacing: 0.2 }}
+          >
             HelpStudyAbroad
           </Typography>
         </Paper>
@@ -108,12 +125,16 @@ export default function Layout({ children }) {
                 sx={{
                   py: 1.2,
                   borderRadius: 1.5,
-                  color: active ? "primary.contrastText" : "rgba(255,255,255,0.9)",
+                  color: active
+                    ? "primary.contrastText"
+                    : "rgba(255,255,255,0.9)",
                   bgcolor: active ? "rgba(255,255,255,0.08)" : "transparent",
                   "&:hover": { bgcolor: "rgba(255,255,255,0.06)" },
                 }}
               >
-                <ListItemIcon sx={{ minWidth: 42, color: "inherit" }}>{item.icon}</ListItemIcon>
+                <ListItemIcon sx={{ minWidth: 42, color: "inherit" }}>
+                  {item.icon}
+                </ListItemIcon>
                 <ListItemText primary={item.label} />
               </ListItemButton>
             </ListItem>
@@ -131,8 +152,14 @@ export default function Layout({ children }) {
         <Box sx={{ display: "flex", alignItems: "center", gap: 2, mt: 1 }}>
           <Avatar sx={{ bgcolor: "secondary.main" }}>{userInitial}</Avatar>
           <Box sx={{ lineHeight: 1 }}>
-            <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.95)" }}>
-              {user ? `${user.firstName || ""} ${user.lastName || ""}`.trim() || user.username : "Guest"}
+            <Typography
+              variant="body2"
+              sx={{ color: "rgba(255,255,255,0.95)" }}
+            >
+              {user
+                ? `${user.firstName || ""} ${user.lastName || ""}`.trim() ||
+                  user.username
+                : "Guest"}
             </Typography>
             <Typography variant="caption" color="rgba(255,255,255,0.6)">
               {user?.email || ""}
@@ -140,7 +167,12 @@ export default function Layout({ children }) {
           </Box>
         </Box>
 
-        <Button fullWidth variant="outlined" sx={{ mt: 2, color: "white", borderColor: "rgba(255,255,255,0.12)" }} onClick={handleLogout}>
+        <Button
+          fullWidth
+          variant="outlined"
+          sx={{ mt: 2, color: "white", borderColor: "rgba(255,255,255,0.12)" }}
+          onClick={handleLogout}
+        >
           Logout
         </Button>
       </Box>
@@ -151,7 +183,6 @@ export default function Layout({ children }) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
 
-      {/* AppBar: gradient + glass */}
       <AppBar
         position="fixed"
         elevation={3}
@@ -162,16 +193,29 @@ export default function Layout({ children }) {
           backdropFilter: "saturate(120%) blur(6px)",
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}>
+        <Toolbar
+          sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}
+        >
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             {isMobile && (
-              <IconButton edge="start" onClick={() => setMobileOpen(true)} aria-label="open drawer" sx={{ color: "white" }}>
+              <IconButton
+                edge="start"
+                onClick={() => setMobileOpen(true)}
+                aria-label="open drawer"
+                sx={{ color: "white" }}
+              >
                 <MenuIcon />
               </IconButton>
             )}
 
-            <Link href="/dashboard" style={{ textDecoration: "none", color: "inherit" }}>
-              <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: 0.3 }}>
+            <Link
+              href="/dashboard"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 800, letterSpacing: 0.3 }}
+              >
                 HelpStudyAbroad
               </Typography>
             </Link>
@@ -189,12 +233,18 @@ export default function Layout({ children }) {
                 }}
               >
                 {NAV.map((n) => (
-                  <Link key={n.href} href={n.href} style={{ textDecoration: "none" }}>
+                  <Link
+                    key={n.href}
+                    href={n.href}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button
                       sx={{
                         textTransform: "none",
                         color: "rgba(255,255,255,0.95)",
-                        fontWeight: router.pathname.startsWith(n.href) ? 700 : 600,
+                        fontWeight: router.pathname.startsWith(n.href)
+                          ? 700
+                          : 600,
                       }}
                     >
                       {n.label}
@@ -226,7 +276,11 @@ export default function Layout({ children }) {
                 sx={{ color: "inherit", width: "100%" }}
               />
               {search ? (
-                <IconButton size="small" onClick={() => setSearch("")} sx={{ color: "white" }}>
+                <IconButton
+                  size="small"
+                  onClick={() => setSearch("")}
+                  sx={{ color: "white" }}
+                >
                   <Typography variant="button" sx={{ opacity: 0.8 }}>
                     Clear
                   </Typography>
@@ -248,16 +302,36 @@ export default function Layout({ children }) {
               </IconButton>
             </Tooltip>
 
-            <Tooltip title={user ? `${user.firstName || ""} ${user.lastName || ""}`.trim() || user.username : "Guest"}>
+            <Tooltip
+              title={
+                user
+                  ? `${user.firstName || ""} ${user.lastName || ""}`.trim() ||
+                    user.username
+                  : "Guest"
+              }
+            >
               <IconButton onClick={handleProfileClick} sx={{ p: 0 }}>
-                <Avatar sx={{ bgcolor: "secondary.main" }}>{userInitial}</Avatar>
+                <Avatar sx={{ bgcolor: "secondary.main" }}>
+                  {userInitial}
+                </Avatar>
               </IconButton>
             </Tooltip>
 
-            <Menu anchorEl={anchorEl} open={openProfile} onClose={handleProfileClose} PaperProps={{ sx: { minWidth: 220 } }}>
+            <Menu
+              anchorEl={anchorEl}
+              open={openProfile}
+              onClose={handleProfileClose}
+              PaperProps={{ sx: { minWidth: 220 } }}
+            >
               <MenuItem disabled>
                 <Box>
-                  <Typography variant="body2">{user ? `${user.firstName || ""} ${user.lastName || ""}`.trim() || user.username : "Guest"}</Typography>
+                  <Typography variant="body2">
+                    {user
+                      ? `${user.firstName || ""} ${
+                          user.lastName || ""
+                        }`.trim() || user.username
+                      : "Guest"}
+                  </Typography>
                   <Typography variant="caption" color="text.secondary">
                     {user?.email || ""}
                   </Typography>
@@ -271,7 +345,11 @@ export default function Layout({ children }) {
                 }}
               >
                 <ListItemIcon>
-                  <Avatar sx={{ bgcolor: "primary.main", width: 28, height: 28 }}>P</Avatar>
+                  <Avatar
+                    sx={{ bgcolor: "primary.main", width: 28, height: 28 }}
+                  >
+                    P
+                  </Avatar>
                 </ListItemIcon>
                 Profile
               </MenuItem>
@@ -292,7 +370,11 @@ export default function Layout({ children }) {
       </AppBar>
 
       {/* Drawer: temporary on mobile, permanent on md+ */}
-      <Box component="nav" sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }} aria-label="sidebar">
+      <Box
+        component="nav"
+        sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
+        aria-label="sidebar"
+      >
         <Drawer
           variant="temporary"
           open={mobileOpen}
@@ -300,7 +382,10 @@ export default function Layout({ children }) {
           ModalProps={{ keepMounted: true }}
           sx={{
             display: { xs: "block", md: "none" },
-            "& .MuiDrawer-paper": { width: drawerWidth, bgcolor: "background.paper" },
+            "& .MuiDrawer-paper": {
+              width: drawerWidth,
+              bgcolor: "background.paper",
+            },
           }}
         >
           {drawerContent}
@@ -323,12 +408,21 @@ export default function Layout({ children }) {
           open
         >
           {/* Permanent drawer needs a wrapper with custom background */}
-          <Box sx={{ height: "100%", bgcolor: "transparent", color: "white" }}>{drawerContent}</Box>
+          <Box sx={{ height: "100%", bgcolor: "transparent", color: "white" }}>
+            {drawerContent}
+          </Box>
         </Drawer>
       </Box>
 
       {/* Main */}
-      <Box component="main" sx={{ flexGrow: 1, p: 3, width: { md: `calc(100% - ${drawerWidth}px)` } }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { md: `calc(100% - ${drawerWidth}px)` },
+        }}
+      >
         <Toolbar />
         <Container maxWidth="lg" sx={{ mt: 2 }}>
           {children}
@@ -336,7 +430,8 @@ export default function Layout({ children }) {
 
         <Box component="footer" sx={{ mt: 4, py: 3, textAlign: "center" }}>
           <Typography variant="caption" color="text.secondary">
-            © {new Date().getFullYear()} HelpStudyAbroad · Frontend Technical Assessment
+            © {new Date().getFullYear()} HelpStudyAbroad · Frontend Technical
+            Assessment
           </Typography>
         </Box>
       </Box>

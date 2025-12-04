@@ -1,4 +1,3 @@
-// src/pages/index.js
 import React from "react";
 import Link from "next/link";
 import {
@@ -14,13 +13,6 @@ import {
   useMediaQuery,
   SvgIcon,
 } from "@mui/material";
-
-/**
- * Professional Landing — fixed header/footer sizes to avoid page scrolling.
- * Header height: 72px
- * Footer height: 72px
- * Hero height: calc(100vh - 144px)  => fits exactly in viewport
- */
 
 function LogoIcon(props) {
   return (
@@ -63,7 +55,15 @@ export default function HomePage() {
           flexShrink: 0,
         }}
       >
-        <Container maxWidth="lg" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", px: 0 }}>
+        <Container
+          maxWidth="lg"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            px: 0,
+          }}
+        >
           <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
             <Avatar sx={{ width: 44, height: 44, bgcolor: "primary.main" }}>
               <LogoIcon sx={{ fontSize: 26 }} />
@@ -117,22 +117,28 @@ export default function HomePage() {
           {/* Left copy */}
           <Box sx={{ maxWidth: 720 }}>
             <Typography
-  variant={isSm ? "h4" : "h2"}
-  sx={{
-    fontWeight: 800,
-    lineHeight: 1.03,
-    mb: 2,
-    background: "linear-gradient(90deg, #6366F1 0%, #3B82F6 30%, #06B6D4 60%, #10B981 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-  }}
->
-  Frontend assessment for modern admin interfaces
-</Typography>
+              variant={isSm ? "h4" : "h2"}
+              sx={{
+                fontWeight: 800,
+                lineHeight: 1.03,
+                mb: 2,
+                background:
+                  "linear-gradient(90deg, #6366F1 0%, #3B82F6 30%, #06B6D4 60%, #10B981 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Frontend assessment for modern admin interfaces
+            </Typography>
 
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 680, mb: 3 }}>
-              A compact demo of authentication, protected routes, user & product management, pagination,
-              filters and a responsive MUI-based interface built for clarity and maintainability.
+            <Typography
+              variant="h6"
+              color="text.secondary"
+              sx={{ maxWidth: 680, mb: 3 }}
+            >
+              A compact demo of authentication, protected routes, user & product
+              management, pagination, filters and a responsive MUI-based
+              interface built for clarity and maintainability.
             </Typography>
 
             <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
@@ -153,7 +159,11 @@ export default function HomePage() {
               </Link>
 
               <Link href="/login" style={{ textDecoration: "none" }}>
-                <Button variant="outlined" size="large" sx={{ px: 3, py: 1.15 }}>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  sx={{ px: 3, py: 1.15 }}
+                >
                   Go to Login
                 </Button>
               </Link>
@@ -173,7 +183,7 @@ export default function HomePage() {
               sx={{
                 borderRadius: 2,
                 p: 3,
-                height: isSm ? "auto" : Math.max(260, '100%'),
+                height: isSm ? "auto" : Math.max(260, "100%"),
                 boxShadow: 3,
                 display: "flex",
                 flexDirection: "column",
@@ -181,23 +191,29 @@ export default function HomePage() {
               }}
             >
               <Box>
-                <Box sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    mb: 1,
+                  }}
+                >
                   <Box>
                     <Typography variant="subtitle2" color="text.secondary">
                       Overview
                     </Typography>
-                   <Typography
-  variant="h6"
-  sx={{
-    fontWeight: 800,
-    background: "linear-gradient(90deg, #6366F1 0%, #3B82F6 40%, #06B6D4 75%, #10B981 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-  }}
->
-  Admin Snapshot
-</Typography>
-
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 800,
+                        background:
+                          "linear-gradient(90deg, #6366F1 0%, #3B82F6 40%, #06B6D4 75%, #10B981 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                      }}
+                    >
+                      Admin Snapshot
+                    </Typography>
                   </Box>
 
                   <Box sx={{ textAlign: "right" }}>
@@ -218,7 +234,11 @@ export default function HomePage() {
 
                 <Divider sx={{ my: 2 }} />
 
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 1.5 }}
+                >
                   Ready for HR demos — minimal, accessible, and easy to explain.
                 </Typography>
               </Box>
@@ -252,13 +272,22 @@ export default function HomePage() {
       >
         <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
-            <MiniCard title="Designed for interviews" body="Clear, focused screens that you can demo and explain in interviews." />
+            <MiniCard
+              title="Designed for interviews"
+              body="Clear, focused screens that you can demo and explain in interviews."
+            />
           </Grid>
           <Grid item xs={12} md={4}>
-            <MiniCard title="Extendable" body="Zustand + MUI architecture lets you add features quickly." />
+            <MiniCard
+              title="Extendable"
+              body="Zustand + MUI architecture lets you add features quickly."
+            />
           </Grid>
           <Grid item xs={12} md={4}>
-            <MiniCard title="Production-ready look" body="Conservative typography, spacing and colors suitable for enterprise." />
+            <MiniCard
+              title="Production-ready look"
+              body="Conservative typography, spacing and colors suitable for enterprise."
+            />
           </Grid>
         </Grid>
       </Box>
@@ -276,7 +305,10 @@ export default function HomePage() {
           flexShrink: 0,
         }}
       >
-        <Container maxWidth="lg" sx={{ display: "flex", justifyContent: "space-between", px: 0 }}>
+        <Container
+          maxWidth="lg"
+          sx={{ display: "flex", justifyContent: "space-between", px: 0 }}
+        >
           <Typography variant="caption" color="text.secondary">
             © {new Date().getFullYear()} HelpStudyAbroad — Frontend assessment
           </Typography>
@@ -303,7 +335,9 @@ export default function HomePage() {
 function Feature({ label = "" }) {
   return (
     <Box sx={{ display: "flex", gap: 1.25, alignItems: "center" }}>
-      <Box sx={{ width: 8, height: 8, borderRadius: 1.5, bgcolor: "primary.main" }} />
+      <Box
+        sx={{ width: 8, height: 8, borderRadius: 1.5, bgcolor: "primary.main" }}
+      />
       <Typography variant="body2" color="text.secondary">
         {label}
       </Typography>

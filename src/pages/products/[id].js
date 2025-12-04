@@ -1,4 +1,3 @@
-// src/pages/products/[id].js
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import {
@@ -64,7 +63,11 @@ export default function ProductDetailPage() {
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
             This may be a network issue or the product does not exist.
           </Typography>
-          <Button sx={{ mt: 2 }} variant="outlined" onClick={() => router.push("/products")}>
+          <Button
+            sx={{ mt: 2 }}
+            variant="outlined"
+            onClick={() => router.push("/products")}
+          >
             Back to Products
           </Button>
         </Box>

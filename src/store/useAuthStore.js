@@ -1,4 +1,3 @@
-// src/store/useAuthStore.js
 import { create } from "zustand";
 
 const AUTH_LOCAL_KEY = "hsa_auth_v1";
@@ -13,11 +12,13 @@ const useAuthStore = create((set, get) => ({
     set({ token: token || null, user: user || null });
     try {
       if (typeof window !== "undefined") {
-        localStorage.setItem(AUTH_LOCAL_KEY, JSON.stringify({ token: token || null, user: user || null }));
+        localStorage.setItem(
+          AUTH_LOCAL_KEY,
+          JSON.stringify({ token: token || null, user: user || null })
+        );
       }
     } catch (e) {
-      // don't crash app if localStorage blocked
-      // console.warn("Failed to persist auth:", e);
+      console.log(e);
     }
   },
 
@@ -48,7 +49,7 @@ const useAuthStore = create((set, get) => ({
         localStorage.removeItem(AUTH_LOCAL_KEY);
       }
     } catch (e) {
-      // ignore
+      console.log(e);
     }
   },
 }));

@@ -1,4 +1,3 @@
-// src/pages/products/index.js
 import React, { useEffect } from "react";
 import ProtectedRoute from "../../components/ProtectedRoute";
 import useProductsStore from "../../store/useProductsStore";

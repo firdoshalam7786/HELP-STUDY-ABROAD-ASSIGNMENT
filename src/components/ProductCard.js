@@ -1,16 +1,12 @@
-// src/components/ProductCard.js
 import React, { useMemo } from "react";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 
-/**
- * ProductCard - memoized product card component
- * Props:
- *  - p: product object
- *  - onClick: stable handler (useCallback from parent)
- */
 function ProductCardInner({ p, onClick }) {
   // memoize thumbnail & price string
-  const thumbnail = useMemo(() => p.thumbnail || (p.images && p.images[0]) || "", [p]);
+  const thumbnail = useMemo(
+    () => p.thumbnail || (p.images && p.images[0]) || "",
+    [p]
+  );
   const priceText = useMemo(() => `$${p.price}`, [p.price]);
 
   return (
@@ -38,7 +34,14 @@ function ProductCardInner({ p, onClick }) {
         <Typography variant="subtitle1" noWrap>
           {p.title}
         </Typography>
-        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mt: 1,
+          }}
+        >
           <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
             {priceText}
           </Typography>
@@ -46,7 +49,12 @@ function ProductCardInner({ p, onClick }) {
             ⭐ {p.rating}
           </Typography>
         </Box>
-        <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: "block" }} noWrap>
+        <Typography
+          variant="caption"
+          color="text.secondary"
+          sx={{ mt: 1, display: "block" }}
+          noWrap
+        >
           {p.category} • {p.brand}
         </Typography>
       </CardContent>
@@ -61,7 +69,8 @@ export default React.memo(ProductCardInner, (prev, next) => {
     prev.p?.id === next.p?.id &&
     prev.p?.title === next.p?.title &&
     prev.p?.price === next.p?.price &&
-    (prev.p?.thumbnail || prev.p?.images?.[0]) === (next.p?.thumbnail || next.p?.images?.[0]) &&
+    (prev.p?.thumbnail || prev.p?.images?.[0]) ===
+      (next.p?.thumbnail || next.p?.images?.[0]) &&
     prev.p?.rating === next.p?.rating
   );
 });

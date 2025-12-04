@@ -27,7 +27,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // If already logged in → redirect to dashboard
+  // If already logged in redirect to dashboard
   useEffect(() => {
     if (token) {
       router.replace("/dashboard");
@@ -39,7 +39,7 @@ export default function LoginPage() {
     setError("");
 
     try {
-      // 1️⃣ Call our proxy-login route instead of DummyJSON
+      //Call our proxy-login route instead of DummyJSON
       const resp = await axios.post("/api/auth/proxy-login", {
         username: data.username,
         password: data.password,
@@ -53,7 +53,7 @@ export default function LoginPage() {
         return;
       }
 
-      // 2️⃣ Save token & user in Zustand store
+      //Save token & user in Zustand store
       setAuth({
         token: payload.token,
         user: {
@@ -65,7 +65,7 @@ export default function LoginPage() {
         },
       });
 
-      // 3️⃣ Tell NextAuth to create session using token-mode
+      //Tell NextAuth to create session using token-mode
       await signIn("credentials", {
         redirect: false,
         username: payload.username,
@@ -103,7 +103,13 @@ export default function LoginPage() {
         square
         sx={{ p: 3 }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
             <LockOutlinedIcon />
           </Avatar>

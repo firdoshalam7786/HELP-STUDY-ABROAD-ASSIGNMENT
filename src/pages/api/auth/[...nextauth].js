@@ -20,7 +20,7 @@ export default NextAuth({
       },
 
       async authorize(credentials) {
-        // 1️⃣ SHORT-CIRCUIT: if token provided → trust frontend, skip DummyJSON
+        // SHORT-CIRCUIT: if token provided → trust frontend, skip DummyJSON
         if (credentials?.token) {
           console.log("NextAuth: accepting token from frontend (proxy login)");
 
@@ -34,7 +34,7 @@ export default NextAuth({
           };
         }
 
-        // 2️⃣ Otherwise → normal DummyJSON authentication
+        // Otherwise normal DummyJSON authentication
         try {
           console.log(
             "NextAuth authorize(): validating with DummyJSON:",

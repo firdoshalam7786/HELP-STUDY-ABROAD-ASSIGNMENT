@@ -11,14 +11,10 @@ const useProductsStore = create((set, get) => ({
   category: "all",
   loading: false,
 
-  // 🔥 FETCH ALL CATEGORIES
-// inside useProductsStore (replace existing fetchCategories)
 fetchCategories: async () => {
   try {
     set({ loading: true });
 
-    // If you were using /products/categories this returns array of strings.
-    // But if some API returns objects, normalize them to strings here.
     const res = await axios.get("https://dummyjson.com/products/categories");
     let cats = res.data;
 
@@ -40,7 +36,7 @@ fetchCategories: async () => {
   }
 },
 
-  // 🔥 FETCH PRODUCT LIST (pagination + search + category)
+  // FETCH PRODUCT LIST (pagination + search + category)
   fetchProducts: async () => {
     try {
       set({ loading: true });
@@ -67,7 +63,7 @@ fetchCategories: async () => {
     }
   },
 
-  // 🔥 FETCH SINGLE PRODUCT (DETAIL PAGE)
+  // FETCH SINGLE PRODUCT (DETAIL PAGE)
   fetchProductById: async (id) => {
     try {
       const res = await axios.get(`https://dummyjson.com/products/${id}`);

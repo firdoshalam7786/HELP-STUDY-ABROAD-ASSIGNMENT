@@ -1,12 +1,8 @@
-// src/lib/api.js
 import axios from "axios";
 import useAuthStore from "../store/useAuthStore";
 
-/**
- * Axios instance used across app.
- * Base URL controlled by NEXT_PUBLIC_DUMMYJSON_BASE (client-side config).
- */
-const API_BASE = process.env.NEXT_PUBLIC_DUMMYJSON_BASE || "https://dummyjson.com";
+const API_BASE =
+  process.env.NEXT_PUBLIC_DUMMYJSON_BASE || "https://dummyjson.com";
 
 const api = axios.create({
   baseURL: API_BASE,

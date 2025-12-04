@@ -1,4 +1,3 @@
-// src/pages/_app.js
 import React, { useEffect } from "react";
 import { SessionProvider } from "next-auth/react";
 import useAuthStore from "../store/useAuthStore";
@@ -12,7 +11,10 @@ const theme = createTheme({
   },
 });
 
-export default function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+export default function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   // restore token & user from localStorage (if present)
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -25,8 +27,6 @@ export default function MyApp({ Component, pageProps: { session, ...pageProps } 
     } else if (typeof store.initFromStorage === "function") {
       store.initFromStorage();
     }
-    // no dependencies: run once on mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

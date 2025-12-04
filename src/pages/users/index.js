@@ -1,4 +1,3 @@
-// src/pages/users/index.js
 import React, { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import ProtectedRoute from "../../components/ProtectedRoute";
@@ -60,17 +59,18 @@ export default function UsersListPage() {
       }
     }, 400);
     return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [localSearch]);
 
   // fetch users when page or search (store) changes
   useEffect(() => {
     fetchUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, search]);
 
   // page count
-  const pageCount = useMemo(() => Math.max(1, Math.ceil(total / limit)), [total, limit]);
+  const pageCount = useMemo(
+    () => Math.max(1, Math.ceil(total / limit)),
+    [total, limit]
+  );
 
   const isMobile = useMediaQuery("(max-width:600px)");
 
@@ -100,7 +100,6 @@ export default function UsersListPage() {
             minHeight: "72px",
           }}
         >
-
           <Typography variant="h4" sx={{ fontWeight: 700 }}>
             Users
           </Typography>
@@ -134,7 +133,9 @@ export default function UsersListPage() {
                 <Typography variant="h5" sx={{ fontWeight: 700 }}>
                   {loading ? <Skeleton width={80} /> : total}
                 </Typography>
-                <FormHelperText>Showing {Math.min(limit, users.length)} users per page</FormHelperText>
+                <FormHelperText>
+                  Showing {Math.min(limit, users.length)} users per page
+                </FormHelperText>
               </CardContent>
             </Card>
           </Grid>
@@ -153,7 +154,12 @@ export default function UsersListPage() {
             </Card>
           </Grid>
 
-          <Grid item xs={12} md={4} sx={{ display: "flex", alignItems: "center" }}>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            sx={{ display: "flex", alignItems: "center" }}
+          >
             <TextField
               label="Search users..."
               variant="outlined"
@@ -258,8 +264,12 @@ export default function UsersListPage() {
           <TableContainer component={Paper} sx={{ mb: 3, boxShadow: 1 }}>
             <Table>
               <TableHead>
-                <TableRow sx={{ backgroundColor: (t) => t.palette.action.hover }}>
-                  <TableCell><strong>Name</strong></TableCell>
+                <TableRow
+                  sx={{ backgroundColor: (t) => t.palette.action.hover }}
+                >
+                  <TableCell>
+                    <strong>Name</strong>
+                  </TableCell>
                   <TableCell>Email</TableCell>
                   <TableCell>Gender</TableCell>
                   <TableCell>Phone</TableCell>
@@ -273,14 +283,19 @@ export default function UsersListPage() {
                     key={u.id}
                     hover
                     sx={{
-                      "&:nth-of-type(odd)": { backgroundColor: (t) => t.palette.action.selected },
+                      "&:nth-of-type(odd)": {
+                        backgroundColor: (t) => t.palette.action.selected,
+                      },
                     }}
                   >
                     <TableCell>
                       <Stack direction="row" spacing={2} alignItems="center">
                         <Avatar>{avatarFrom(u)}</Avatar>
                         <Box>
-                          <Link href={`/users/${u.id}`} style={{ textDecoration: "none", color: "#1976d2" }}>
+                          <Link
+                            href={`/users/${u.id}`}
+                            style={{ textDecoration: "none", color: "#1976d2" }}
+                          >
                             <Typography sx={{ fontWeight: 600 }}>
                               {u.firstName} {u.lastName}
                             </Typography>
@@ -309,36 +324,73 @@ export default function UsersListPage() {
           <Grid container spacing={2} sx={{ mb: 3 }}>
             {users.map((u) => (
               <Grid item xs={12} key={u.id}>
-                <Card sx={{ display: "flex", flexDirection: "column", minHeight: 140 }}>
+                <Card
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    minHeight: 140,
+                  }}
+                >
                   <CardContent sx={{ pb: 0 }}>
-                    <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
+                    <Stack
+                      direction="row"
+                      spacing={2}
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
                       <Stack direction="row" spacing={2} alignItems="center">
                         <Avatar>{avatarFrom(u)}</Avatar>
                         <Box>
-                          <Link href={`/users/${u.id}`} style={{ textDecoration: "none", color: "#1976d2" }}>
-                            <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                          <Link
+                            href={`/users/${u.id}`}
+                            style={{ textDecoration: "none", color: "#1976d2" }}
+                          >
+                            <Typography
+                              variant="subtitle1"
+                              sx={{ fontWeight: 600 }}
+                            >
                               {u.firstName} {u.lastName}
                             </Typography>
                           </Link>
-                          <Typography variant="body2" color="text.secondary" sx={{ fontSize: 13 }}>
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{ fontSize: 13 }}
+                          >
                             {u.email}
                           </Typography>
                         </Box>
                       </Stack>
 
-                      <Chip label={u.company?.name ? u.company.name : "No company"} size="small" />
+                      <Chip
+                        label={u.company?.name ? u.company.name : "No company"}
+                        size="small"
+                      />
                     </Stack>
 
                     <Stack direction="row" spacing={2} sx={{ mt: 1 }}>
-                      <Typography variant="caption">Gender: {u.gender || "-"}</Typography>
-                      <Typography variant="caption">Phone: {u.phone || "-"}</Typography>
+                      <Typography variant="caption">
+                        Gender: {u.gender || "-"}
+                      </Typography>
+                      <Typography variant="caption">
+                        Phone: {u.phone || "-"}
+                      </Typography>
                     </Stack>
                   </CardContent>
 
                   {/* Button pinned to bottom */}
                   <CardActions sx={{ mt: "auto", px: 2, pb: 2 }}>
-                    <Box sx={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
-                      <Link href={`/users/${u.id}`} style={{ textDecoration: "none" }}>
+                    <Box
+                      sx={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <Link
+                        href={`/users/${u.id}`}
+                        style={{ textDecoration: "none" }}
+                      >
                         <Button
                           variant="contained"
                           size="small"
